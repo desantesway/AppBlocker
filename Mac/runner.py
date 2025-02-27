@@ -4,7 +4,7 @@ import os
 
 if __name__ == "__main__":
     subprocess.Popen(
-        [sys.executable, "/Users/pedro/Documents/Apps/BlockApps/BlockApp/main.py"],
+        [sys.executable, os.path.dirname(os.path.realpath(__file__)) + "/main.py"],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
         stdin=subprocess.DEVNULL,
