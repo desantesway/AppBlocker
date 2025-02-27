@@ -3,14 +3,7 @@ def always():
 {
     "vacation":false,
     "week":{
-        "every_day":[
-            {   
-                "disabled": false,
-                "start": "00:00",
-                "end": "00:00",
-                "sites": "?www.youtube.com?"
-            }
-            ],
+        "every_day":[],
         "monday": [],
         "tuesday": [],
         "wednesday": [],
