@@ -45,7 +45,7 @@ def schedule():
                 "disabled": false,
                 "start": "00:00",
                 "end": "00:00",
-                "sites": "?www.youtube.com?"
+                "sites": "daily_sites"
             }
         ],
         "monday": [],
