@@ -1,4 +1,8 @@
 import os
+import time
+import pyautogui
+import ctypes
 
 def send_notification(title, message, button):
-    os.system(f"msg Gaming {message}")
+    ctypes.windll.user32.MessageBoxW(0, message, title, 1)
+

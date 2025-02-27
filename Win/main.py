@@ -1,4 +1,5 @@
-# pyinstaller main.py --onefile --name="MSI Center Service (32 bit)" --icon="icon.ico"
+# pyinstaller main.py --onefile --name="AppBlocker" 
+# --icon="icon.ico"
 
 from presets import adult, custom_sites, custom_apps, schedule, always
 from killer import monitor_and_close_app, update_hosts, remove_hosts
@@ -144,6 +145,11 @@ def blocks(data):
                         for sites in bbs[1].split('?'):
                             if "www" in sites:
                                 blocks = (blocks[0], blocks[1] + [sites] + [sites.replace('www.','')])
+                    if "?" in bbs[0]:
+                        for apps in bbs[0].split('?'):
+                            if '' != apps:
+                                blocks = (blocks[0] + [apps], blocks[1])
+                    print(blocks)
                         
                     temp = shared_info[rn.tm_wday][1]
                     temp[i] = 369

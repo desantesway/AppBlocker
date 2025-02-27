@@ -24,12 +24,23 @@ def schedule():
             {
                 "start": "21:00",
                 "end": "06:00",
-                "apps": "daily_apps",
-                "sites": "daily_sites"
-            },{
+                "apps": "daily_apps"
+            },
+            {
                 "start": "00:00",
                 "end": "00:00",
-                "sites": "?www.youtube.com?"
+                "apps": "?stremio?",
+                "sites": "daily_sites"
+            },
+            {
+                "start": "00:00",
+                "end": "18:00",
+                "apps": "?steam?hydra?"
+            },
+            {
+                "start": "18:00",
+                "end": "00:00",
+                "apps": "?steam?hydra?"
             }
         ],
         "monday": [],
@@ -42,7 +53,7 @@ def schedule():
     }
   }
 '''
-
+ ##  testa se steam block qualquer jogo
 def adult():
     return ""
 
