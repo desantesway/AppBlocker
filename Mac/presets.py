@@ -37,12 +37,12 @@ def schedule():
             {
                 "disabled": false,
                 "start": "20:00",
-                "end": "08:00",
+                "end": "06:00",
                 "apps": "daily_apps",
                 "sites": "daily_sites"
             },
             {   
-                "disabled": true,
+                "disabled": false,
                 "start": "00:00",
                 "end": "00:00",
                 "sites": "?www.youtube.com?"
