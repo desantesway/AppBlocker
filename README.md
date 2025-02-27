@@ -1,1 +1,1 @@
-# AppBlocker
+# BlockApps
