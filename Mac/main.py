@@ -129,7 +129,7 @@ def blocks(data):
     processes.append(p)
     p.start()
     rn = time.localtime()
-    p = multiprocessing.Process(target=site_killer, args=("adult", [["",[369]]], adult(), 0, 0, w_message, lock), name=f'Adult Killer')
+    p = multiprocessing.Process(target=site_killer, args=("adult", [["",[-369]]], adult(), 0, 0, w_message, lock), name=f'Adult Killer')
     processes.append(p)
     p.start()
     
