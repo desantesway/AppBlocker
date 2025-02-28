@@ -128,7 +128,11 @@ def blocks(data):
     p = multiprocessing.Process(target=listener, args=(lock, disabled, w_message), name=f'Key Listener')
     processes.append(p)
     p.start()
-    
+    rn = time.localtime()
+    p = multiprocessing.Process(target=site_killer, args=("adult", [["",[369]]], adult(), 0, 0, w_message, lock), name=f'Adult Killer')
+    processes.append(p)
+    p.start()
+    time.sleep(200000)
     j = 0
     
     while True:
@@ -177,8 +181,6 @@ def blocks(data):
                             blocks = (blocks[0] + custom_apps(), blocks[1])
                         if "daily_sites" in bbs[1]:
                             blocks = (blocks[0], blocks[1] + custom_sites())
-                        if "adult_sites" in bbs[1]:
-                            blocks = (blocks[0], blocks[1] + adult())
                         if "?" in bbs[1]:
                             for sites in bbs[1].split('?'):
                                 if 'www' in sites:
@@ -191,6 +193,7 @@ def blocks(data):
                         temp = shared_info[rn.tm_wday][1]
                         temp[i] = -369
                         shared_info[rn.tm_wday] = [shared_info[rn.tm_wday][0], temp]
+                        print(bbs[0], shared_info, blocks[0], rn.tm_wday, i)
                         if len(blocks[0]) > 0:
                             p = multiprocessing.Process(target=proc_killer, args=(bbs[0], shared_info, blocks[0], rn.tm_wday, i, w_message, lock), name=f'Process Killer-{j}')
                             processes.append(p)
