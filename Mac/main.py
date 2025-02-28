@@ -132,7 +132,7 @@ def blocks(data):
     p = multiprocessing.Process(target=site_killer, args=("adult", [["",[369]]], adult(), 0, 0, w_message, lock), name=f'Adult Killer')
     processes.append(p)
     p.start()
-    time.sleep(200000)
+    
     j = 0
     
     while True:
