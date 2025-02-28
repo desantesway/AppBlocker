@@ -62,7 +62,7 @@ def writer(w_message, lock):
                 w_message.value = ""
         with open("./prints.log", "w") as log:
             log.write(to_write)
-        time.sleep(300)
+        time.sleep(30)
      
 week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
         
