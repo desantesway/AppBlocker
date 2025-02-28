@@ -36,7 +36,6 @@ def monitor_and_close_app(apps, sub):
     
 def update_hosts(sites):
 
-    print(sites)
     redirect = "0.0.0.0"
     hosts_path = r"C:\Windows\System32\drivers\etc\hosts"
 
