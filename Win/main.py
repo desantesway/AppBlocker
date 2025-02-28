@@ -1,4 +1,4 @@
-# pyinstaller main.py --onefile --name="AppBlocker" 
+# pyinstaller --noconsole main.py --onefile --name="AppBlocker" 
 # --icon="icon.ico"
 
 from presets import adult, custom_sites, custom_apps, schedule, always
@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 import json
 import os
 import multiprocessing
+import sys
 
 def active(start, end):
     start = start.time()
@@ -206,11 +207,10 @@ def blocks(data):
 if __name__ == "__main__":
 
     multiprocessing.freeze_support()
-    
+
     file = schedule()
 
     data = json.loads(file)
-
 
     if data["vacation"]:
         file = always()
@@ -220,12 +220,16 @@ if __name__ == "__main__":
     what = data["week"]
     del what["every_day"]
 
+    count = 0
     while True:
         try:
             remove_hosts()
             break
         except Exception as e:
+            if count > 20:
+                sys.exit(0)
             print("No permission")
+            count+=1
             time.sleep(10)
 
     blocks(remake(wth, what))

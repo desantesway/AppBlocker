@@ -42,7 +42,7 @@ def schedule():
             },
             {
                 "start": "20:00",
-                "end": "00:00",
+                "end": "23:59",
                 "apps": "?steam?hydra?"
             }
         ],
