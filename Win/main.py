@@ -19,14 +19,14 @@ def active(start, end):
     else:
         return now >= start or now <= end
     
-def site_killer(bbs, shared_info, blocks, wday, i, w_message, lock):
+def site_killer(redirect, bbs, shared_info, blocks, wday, i, w_message, lock):
     while True:
         try:
             with lock:
                 on = shared_info[wday][1][i] != 0
             if on:
                 if len(blocks) > 0:
-                    update_hosts(blocks)
+                    update_hosts(redirect, blocks)
                 w_message.value = w_message.value + multiprocessing.current_process().name + " " + str(datetime.now()) + " " + bbs + "\n"
             else:
                 remove_hosts()
@@ -111,7 +111,14 @@ def blocks(data):
     processes.append(p)
     p.start()
 
-    p = multiprocessing.Process(target=site_killer, args=("adult", [["",[-369]]], adult(), 0, 0, w_message, lock), name=f'Adult Killer')
+    p = multiprocessing.Process(target=site_killer, args=("0.0.0.0", "adult", [["",[-369]]], adult(), 0, 0, w_message, lock), name=f'Adult Killer')
+    processes.append(p)
+    p.start()
+
+    g_safeguard = ".google.com .google.ad .google.ae .google.com.af .google.com.ag .google.al .google.am .google.co.ao .google.com.ar .google.as .google.at .google.com.au .google.az .google.ba .google.com.bd .google.be .google.bf .google.bg .google.com.bh .google.bi .google.bj .google.com.bn .google.com.bo .google.com.br .google.bs .google.bt .google.co.bw .google.by .google.com.bz .google.ca .google.cd .google.cf .google.cg .google.ch .google.ci .google.co.ck .google.cl .google.cm .google.cn .google.com.co .google.co.cr .google.com.cu .google.cv .google.com.cy .google.cz .google.de .google.dj .google.dk .google.dm .google.com.do .google.dz .google.com.ec .google.ee .google.com.eg .google.es .google.com.et .google.fi .google.com.fj .google.fm .google.fr .google.ga .google.ge .google.gg .google.com.gh .google.com.gi .google.gl .google.gm .google.gr .google.com.gt .google.gy .google.com.hk .google.hn .google.hr .google.ht .google.hu .google.co.id .google.ie .google.co.il .google.im .google.co.in .google.iq .google.is .google.it .google.je .google.com.jm .google.jo .google.co.jp .google.co.ke .google.com.kh .google.ki .google.kg .google.co.kr .google.com.kw .google.kz .google.la .google.com.lb .google.li .google.lk .google.co.ls .google.lt .google.lu .google.lv .google.com.ly .google.co.ma .google.md .google.me .google.mg .google.mk .google.ml .google.com.mm .google.mn .google.com.mt .google.mu .google.mv .google.mw .google.com.mx .google.com.my .google.co.mz .google.com.na .google.com.ng .google.com.ni .google.ne .google.nl .google.no .google.com.np .google.nr .google.nu .google.co.nz .google.com.om .google.com.pa .google.com.pe .google.com.pg .google.com.ph .google.com.pk .google.pl .google.pn .google.com.pr .google.ps .google.pt .google.com.py .google.com.qa .google.ro .google.ru .google.rw .google.com.sa .google.com.sb .google.sc .google.se .google.com.sg .google.sh .google.si .google.sk .google.com.sl .google.sn .google.so .google.sm .google.sr .google.st .google.com.sv .google.td .google.tg .google.co.th .google.com.tj .google.tl .google.tm .google.tn .google.to .google.com.tr .google.tt .google.com.tw .google.co.tz .google.com.ua .google.co.ug .google.co.uk .google.com.uy .google.co.uz .google.com.vc .google.co.ve .google.co.vi .google.com.vn .google.vu .google.ws .google.rs .google.co.za .google.co.zm .google.co.zw .google.cat"
+    g_safeguard = [[f'www{domain}'] + [domain[1:]] for domain in g_safeguard.split(" ") if "google" in domain]
+
+    p = multiprocessing.Process(target=site_killer, args=('216.239.38.120', "safeguard", [["",[-369]]], g_safeguard[0], 0, 0, w_message, lock), name=f'Google SafeGuard')
     processes.append(p)
     p.start()
     
@@ -162,7 +169,7 @@ def blocks(data):
                         processes.append(p)
                         p.start()
                     if len(blocks[1]) > 0:
-                        p = multiprocessing.Process(target=site_killer, args=(bbs[1], shared_info, blocks[1], rn.tm_wday, i, w_message, lock), name=f'Site Killer-{j}')
+                        p = multiprocessing.Process(target=site_killer, args=("0.0.0.0", bbs[1], shared_info, blocks[1], rn.tm_wday, i, w_message, lock), name=f'Site Killer-{j}')
                         processes.append(p)
                         p.start()
                     j += 1
@@ -222,5 +229,4 @@ if __name__ == "__main__":
             time.sleep(10)
 
     blocks(remake(wth, what))
-    
     

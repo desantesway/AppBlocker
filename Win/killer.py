@@ -34,16 +34,15 @@ def monitor_and_close_app(apps, sub):
             send_notification("Focus!", f"{app} is blocked.", "Back to focusing!")
     return sub
     
-def update_hosts(sites):
+def update_hosts(redirect, sites):
 
-    redirect = "0.0.0.0"
     hosts_path = r"C:\Windows\System32\drivers\etc\hosts"
 
     with open(hosts_path, 'r') as hostfile:
             hosts_content = hostfile.read()
 
     new_entries = [redirect + ' ' + site + '\n' for site in sites if site not in hosts_content]
-
+    
     if new_entries:
         with open(hosts_path, 'a') as hostfile:
             hostfile.writelines(new_entries)

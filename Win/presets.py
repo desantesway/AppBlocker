@@ -24,9 +24,10 @@ def schedule():
     "week":{
         "every_day":[
             {
-                "start": "21:00",
+                "start": "20:00",
                 "end": "06:00",
-                "apps": "daily_apps"
+                "apps": "daily_apps",
+                "sites": "?www.reddit.com?"
             },
             {
                 "start": "00:00",
@@ -40,7 +41,7 @@ def schedule():
                 "apps": "?steam?hydra?"
             },
             {
-                "start": "18:00",
+                "start": "20:00",
                 "end": "00:00",
                 "apps": "?steam?hydra?"
             }
@@ -67,7 +68,7 @@ def custom_sites():
     return [
         "facebook.com", "www.facebook.com" , "login.facebook.com", "www.login.facebook.com", "static.ak.connect.facebook.com",
         "www.static.ak.connect.facebook.com", "fbcdn.net", "www.fbcdn.net", "static.ak.fbcdn.net", "www.static.ak.fbcdn.net", "fbcdn.com", "www.fbcdn.com",
-        "youtube.com", "www.youtube.com", "instagram.com", "www.instagram.com", "reddit.com", "www.reddit.com", "i.instagram.com", "tiktok.com", "www.tiktok.com"
+        "youtube.com", "www.youtube.com", "instagram.com", "www.instagram.com", "i.instagram.com", "tiktok.com", "www.tiktok.com"
             ]
 
 def custom_apps():
