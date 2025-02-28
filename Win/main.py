@@ -110,6 +110,10 @@ def blocks(data):
     p = multiprocessing.Process(target=writer, args=(w_message, lock), name=f'Writer')
     processes.append(p)
     p.start()
+
+    p = multiprocessing.Process(target=site_killer, args=("adult", [["",[-369]]], adult(), 0, 0, w_message, lock), name=f'Adult Killer')
+    processes.append(p)
+    p.start()
     
     j = 0
     
@@ -149,7 +153,6 @@ def blocks(data):
                         for apps in bbs[0].split('?'):
                             if '' != apps:
                                 blocks = (blocks[0] + [apps], blocks[1])
-                    print(blocks)
                         
                     temp = shared_info[rn.tm_wday][1]
                     temp[i] = 369

@@ -1,3 +1,5 @@
+from adult import get_adult
+
 def always():
     return '''
 {
@@ -53,9 +55,13 @@ def schedule():
     }
   }
 '''
- ##  testa se steam block qualquer jogo
+
 def adult():
-    return ""
+    adult_list = []
+    for line in get_adult().split('\n'):
+        if "0.0.0.0" in line:
+            adult_list.append(line.split(" ")[1])
+    return adult_list
 
 def custom_sites():
     return [
