@@ -3,7 +3,7 @@
 # python3 -m pip install pynput psutil
 # pyinstaller --onefile main.py
 #
-# pyarmor gen crypt_code.py killer.py main.py presets.py runner.py noti.py listener.py
+# pyarmor gen crypt_code.py killer.py main.py presets.py runner.py noti.py listener.py adult.py
 
 from presets import adult, custom_sites, custom_apps, schedule, always
 from killer import monitor_and_close_app, update_hosts, remove_hosts
