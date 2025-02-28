@@ -1,6 +1,3 @@
-import os
-import time
-import pyautogui
 import ctypes
 
 def send_notification(title, message, button):
