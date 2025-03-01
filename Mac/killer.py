@@ -39,6 +39,18 @@ def monitor_and_close_app(apps, sub):
             if len(processes) > 0:
                 send_notification("Focus!", f"{app} is blocked.", "Back to focusing!")
     return sub
+
+def update_hosts_redirected(sites):
+    hosts_path = r"/private/etc/hosts"
+
+    with open(hosts_path, 'r+') as hostfile:
+            hosts_content = hostfile.read()
+
+    new_entries = [site for site in sites if site not in hosts_content]
+
+    if new_entries:
+        with open(hosts_path, 'a+') as hostfile:
+            hostfile.writelines(new_entries)
     
 def update_hosts(sites):
     redirect = "0.0.0.0"

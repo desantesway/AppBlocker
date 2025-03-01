@@ -3,10 +3,10 @@
 # python3 -m pip install pynput psutil
 # pyinstaller --onefile main.py
 #
-# pyarmor gen crypt_code.py killer.py main.py presets.py runner.py noti.py listener.py adult.py
+# pyarmor gen crypt_code.py killer.py main.py presets.py runner.py noti.py listener.py adult.py safeguard.py
 
 from presets import adult, custom_sites, custom_apps, schedule, always
-from killer import monitor_and_close_app, update_hosts, remove_hosts
+from killer import monitor_and_close_app, update_hosts, remove_hosts, update_hosts_redirected
 from noti import send_notification
 import time
 from datetime import datetime, timedelta
@@ -14,6 +14,7 @@ import json
 import os
 import multiprocessing
 from listener import listener
+from safeguard import google
 
 def active(start, end):
     start = start.time()
@@ -64,6 +65,17 @@ def proc_killer(bbs, shared_info, blocks, wday, i, w_message, lock):
         time.sleep(5)
     os._exit(0)
     
+def adlt_killer(blocks, w_message, lock):
+    while True:
+        try:
+            if len(blocks) > 0:
+                update_hosts_redirected(blocks)
+            with lock:
+                w_message.value = w_message.value + multiprocessing.current_process().name + " " + str(datetime.now()) + " Adult Killer " + "\n"
+        except Exception as e:
+            w_message.value = w_message.value + f"Unexpected error: {e}"
+        time.sleep(30)
+    
 def writer(w_message, lock):
     while True:
         with lock:
@@ -73,7 +85,7 @@ def writer(w_message, lock):
                 w_message.value = ""
         with open("./prints.log", "w") as log:
                 log.write(to_write)
-        time.sleep(5) #300
+        time.sleep(30) #300
      
 week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
         
@@ -129,7 +141,12 @@ def blocks(data):
     processes.append(p)
     p.start()
 
-    p = multiprocessing.Process(target=site_killer, args=("adult", [["",[-369]]], adult(), 0, 0, w_message, lock), name=f'Adult Killer')
+    g_safeguard = [f'216.239.38.120 www{domain}\n' + f'216.239.38.120 {domain[1:]}\n' for domain in google().split(" ") if "google" in domain]
+    other_safeguard = ["52.142.126.100 duckduckgo.com\n52.142.126.100 www.duckduckgo.com\n",
+                       "204.79.197.220 www.bing.com\n204.79.197.220 bing.com\n204.79.197.220 www2.bing.com\n204.79.197.220 www3.bing.com\n"
+                       ]
+    kills = ["::1"+ ' ' + site + '\n' + "0.0.0.0" + ' ' + site + '\n' for site in adult()]
+    p = multiprocessing.Process(target=adlt_killer, args=(kills+g_safeguard+other_safeguard, w_message, lock), name=f'Adult Killer')
     processes.append(p)
     p.start()
     
@@ -266,6 +283,7 @@ def main():
 import logging
 
 if __name__ == "__main__":
+
     log_file = "child.log"
     if os.path.exists(log_file):
         os.remove(log_file)
