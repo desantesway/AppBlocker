@@ -40,6 +40,7 @@ def schedule():
                 "disabled": false,
                 "start": "00:00",
                 "end": "00:00",
+                "apps": "?duckduckgo?",
                 "sites": "daily_sites"
             }
         ],
@@ -66,7 +67,7 @@ def custom_sites():
         "facebook.com", "www.facebook.com" , "login.facebook.com", "www.login.facebook.com", "static.ak.connect.facebook.com",
         "www.static.ak.connect.facebook.com", "fbcdn.net", "www.fbcdn.net", "static.ak.fbcdn.net", "www.static.ak.fbcdn.net", "fbcdn.com", "www.fbcdn.com",
         "youtube.com", "www.youtube.com", "instagram.com", "www.instagram.com", "www.animepahe.ru", "animepahe.ru", "aniwave.se", "aniwave.es", 
-        "www.aniwave.se", "www.aniwave.es", "i.instagram.com", "tiktok.com", "www.tiktok.com"
+        "www.aniwave.se", "www.aniwave.es", "i.instagram.com", "tiktok.com", "www.tiktok.com", "reddit.com", "www.reddit.com"
             ]
 
 def custom_apps():
