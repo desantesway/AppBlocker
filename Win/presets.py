@@ -32,12 +32,12 @@ def schedule():
             {
                 "start": "00:00",
                 "end": "00:00",
-                "apps": "?stremio?",
+                "apps": "?stremio?duckduckgo?",
                 "sites": "daily_sites"
             },
             {
                 "start": "00:00",
-                "end": "18:00",
+                "end": "17:00",
                 "apps": "?steam?hydra?"
             },
             {
