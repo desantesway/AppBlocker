@@ -67,7 +67,8 @@ def custom_sites():
         "facebook.com", "www.facebook.com" , "login.facebook.com", "www.login.facebook.com", "static.ak.connect.facebook.com",
         "www.static.ak.connect.facebook.com", "fbcdn.net", "www.fbcdn.net", "static.ak.fbcdn.net", "www.static.ak.fbcdn.net", "fbcdn.com", "www.fbcdn.com",
         "youtube.com", "www.youtube.com", "instagram.com", "www.instagram.com", "www.animepahe.ru", "animepahe.ru", "aniwave.se", "aniwave.es", 
-        "www.aniwave.se", "www.aniwave.es", "i.instagram.com", "tiktok.com", "www.tiktok.com", "reddit.com", "www.reddit.com"
+        "www.aniwave.se", "www.aniwave.es", "i.instagram.com", "tiktok.com", "www.tiktok.com", "reddit.com", "www.reddit.com", "twitter.com", "www.twitter.com",
+        "x.com", "www.x.com"
             ]
 
 def custom_apps():
