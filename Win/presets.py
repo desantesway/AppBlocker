@@ -26,7 +26,7 @@ def schedule():
             {
                 "start": "20:00",
                 "end": "06:00",
-                "apps": "daily_apps",
+                "apps": "?steam?",
                 "sites": "?www.reddit.com?"
             },
             {
@@ -38,12 +38,12 @@ def schedule():
             {
                 "start": "00:00",
                 "end": "17:00",
-                "apps": "?steam?hydra?"
+                "apps": "daily_apps"
             },
             {
                 "start": "20:00",
                 "end": "23:59",
-                "apps": "?steam?hydra?"
+                "apps": "daily_apps"
             }
         ],
         "monday": [],
@@ -68,11 +68,12 @@ def custom_sites():
     return [
         "facebook.com", "www.facebook.com" , "login.facebook.com", "www.login.facebook.com", "static.ak.connect.facebook.com",
         "www.static.ak.connect.facebook.com", "fbcdn.net", "www.fbcdn.net", "static.ak.fbcdn.net", "www.static.ak.fbcdn.net", "fbcdn.com", "www.fbcdn.com",
-        "youtube.com", "www.youtube.com", "instagram.com", "www.instagram.com", "i.instagram.com", "tiktok.com", "www.tiktok.com"
+        "youtube.com", "www.youtube.com", "instagram.com", "www.instagram.com", "i.instagram.com", "tiktok.com", "www.tiktok.com", "x.com", "www.x.com", "twitter.com",
+        "www.twitter.com"
             ]
 
 def custom_apps():
     return [
-        "spotify", "chrome", "firefox", "opera", "DRAGON BALL", "Red Dead Redemption", "GTA", "GRAND THEFT AUTO", "Spider-Man", "Celeste",
+        "DRAGON BALL", "Red Dead Redemption", "GTA", "GRAND THEFT AUTO", "Spider-Man", "Celeste",
         "balatro", "uno", "ubisoft", "insaniquarium", "sonic", "Stardew Valley", "Neighbours back From Hell", "Spore", "Hollow Knight", "Ghost of Tsushima"
             ]
