@@ -57,6 +57,10 @@ cd BlockApps
 
 3. Run the script with administrator privileges
 
+### 👀 Recommended
+
+Use pyarmor to crypt the python files and make it impossible to edit the presets.py or any file
+
 ---
 
 ## ⭐️ Star the repo if you find it helpful!
